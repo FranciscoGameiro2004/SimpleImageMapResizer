@@ -1,4 +1,13 @@
-let previousSize = document.querySelector('.img').naturalHeight
+let previousSize = 0
+addEventListener('DOMContentLoaded',()=>{
+    previousSize = document.querySelector('.img').naturalHeight
+
+    resizeMap()
+
+    addEventListener('resize', ()=>{
+        resizeMap()
+    })
+})
 
 function resizeMap(){
     let naturalSize = previousSize
@@ -20,9 +29,3 @@ function resizeMap(){
     console.log('lol');
     previousSize = size
 }
-
-resizeMap()
-
-addEventListener('resize', ()=>{
-    resizeMap()
-})
