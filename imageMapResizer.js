@@ -17,10 +17,12 @@ function resizeMap(){
     let multiplier = []
     let naturalSize = []
     let size = []
+    let useMap = []
 
     previousSize.forEach((prev, index) => {
         naturalSize.push(prev)
         size.push(document.querySelectorAll('.img-map')[index].height)
+        useMap.push(document.querySelectorAll('.img-map')[index].getAttribute('usemap').substr(1,document.querySelectorAll('.img-map')[index].getAttribute('usemap').length-1))
     });
 
     previousSize.forEach((element, index) => {
@@ -28,9 +30,8 @@ function resizeMap(){
     })
 
     const map = document.querySelectorAll('.map')
-    console.log(map.length)
-    map.forEach((nodes, mapIndex) => {
-        nodes.childNodes.forEach(node => {
+    useMap.forEach((name, mapIndex) => {
+        document.getElementsByName(name)[0].childNodes.forEach(node => {
             if (node.tagName === 'AREA') {
                 let coords = node.getAttribute('coords').split(',')
                 coords.forEach((number, coordsIndex) => {
